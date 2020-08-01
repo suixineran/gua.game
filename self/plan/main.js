@@ -38,6 +38,9 @@ var __main = function() {
         player: 'img/player.gif',
         cloud: 'img/cloud1.png',
         sky: 'img/sky.png',
+        enemy1: 'img/enemy1.png',
+        enemy2: 'img/enemy2.gif',
+        enemy3: 'img/enemy3.png',
     }
 
     var game = GuaGame.instance(30, images, function(g){

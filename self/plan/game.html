@@ -26,12 +26,80 @@
         <script src='level.js'></script>
     </head>
     <body>
-        <canvas id="id-canvas" width="320" height="500"> </canvas>
+        <canvas id="id-canvas" width="600" height="600"> </canvas>
         <hr>
         <input id=id-input-speed type="range" value="1">
         <div class="">
             <!-- <textarea id="id-text-log" rows="20" cols="50"></textarea> -->
         </div>
+
+        <div calss="">
+            <label>
+                <input
+                class="gua-auto-slider"
+                type="range"
+                value=""
+                data-value="config.player_speed"
+                >
+               玩家速度 <span class="gua-label"></span>
+            </label>
+        </div>
+        <div calss="">
+            <label>
+                <input
+                        class="gua-auto-slider"
+                        type="range"
+                        value=""
+                        data-value="config.bullet_speed"
+                >
+                子弹速度 <span class="gua-label"></span>
+            </label>
+        </div>
+        <div calss="">
+            <label>
+                <input
+                        class="gua-auto-slider"
+                        type="range"
+                        value=""
+                        data-value="config.fire_cooldown"
+                >
+                子弹冷却功能 <span class="gua-label"></span>
+            </label>
+        </div>
+        <div calss="">
+            <label>
+                <input
+                        class="gua-auto-slider"
+                        type="range"
+                        value=""
+                        max="30"
+                        min="-15"
+                        data-value="config.cloud_speed"
+                >
+                云速度 <span class="gua-label"></span>
+            </label>
+        </div>
+        <script>
+            let es= sel => document.querySelectorAll(sel)
+            let binAll = function (sel, eventName, callback) {
+                let l = es(sel)
+                for (let i = 0; i < l.length; i++) {
+                    let input = l[i]
+                    // 不要穿参数，穿一个匿名函数调用
+                    input.addEventListener(eventName, function (event) {
+                        callback(event)
+                    })
+                }
+            }
+            binAll('.gua-auto-slider', 'input', function (event) {
+                let target = event.target
+                let bindVar = target.dataset.value
+                let v = target.value
+                eval(bindVar + '=' + v)
+                let label = target.closest('label').querySelector('.gua-label')
+                label.innerText = v
+            })
+        </script>
         <script src=main.js></script>
     </body>
 </html>
