@@ -26,10 +26,10 @@ var enableDebugMode = function(game, enable) {
         }
     })
     // 控制速度
-    document.querySelector('#id-input-speed').addEventListener('input', function(event) {
-        var input = event.target
-        window.fps = Number(input.value)
-    })
+    // document.querySelector('#id-input-speed').addEventListener('input', function(event) {
+    //     var input = event.target
+    //     window.fps = Number(input.value)
+    // })
 }
 
 var __main = function() {
@@ -41,10 +41,12 @@ var __main = function() {
         enemy1: 'img/enemy1.png',
         enemy2: 'img/enemy2.gif',
         enemy3: 'img/enemy3.png',
+        fire: 'img/fire.png',
     }
 
     var game = GuaGame.instance(30, images, function(g){
         var s = Scene.new(g)
+        // var s = SceneTitle.new(g)
         g.runWithScene(s)
     })
 

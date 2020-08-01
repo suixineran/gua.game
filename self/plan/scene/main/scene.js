@@ -85,6 +85,7 @@ class Enemy extends GuaImage {
         this.y = -randomBetween(50, 100)
     }
     update() {
+        this.speed = config.enemy_speed
         this.y += this.speed
         if (this.y > 550) {
             this.setup()
@@ -136,6 +137,8 @@ class Scene extends GuaScene {
         this.addElement(this.cloud)
         this.addElement(this.player)
         this.addEnemies()
+        let ps = GuaParticleSystem.new(this.game)
+        this.addElement(ps)
     }
 
     addEnemies() {

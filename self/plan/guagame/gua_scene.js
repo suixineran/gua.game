@@ -16,9 +16,10 @@ class GuaScene {
 
     // 自动的
     draw() {
-        for (let i = 0; i < this.elements.length; i++) {
-            let e = this.elements[i]
-            this.game.drawImage(e)
+        for (let e of this.elements) {
+            // let e = this.elements[i]
+            // this.game.drawImage(e)
+            e.draw()
         }
     }
     update() {
