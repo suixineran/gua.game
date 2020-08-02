@@ -56,6 +56,8 @@ var __main = function() {
         idle4: 'img/idle/idle4.png',
         idle5: 'img/idle/idle5.png',
         idle6: 'img/idle/idle6.png',
+        ground: 'img/brid/ground.png',
+
 
     }
 
