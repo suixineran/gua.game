@@ -14,6 +14,7 @@ class GuaScene {
         this.elements.push(img)
     }
 
+
     // 自动的
     draw() {
         for (let e of this.elements) {
@@ -21,6 +22,7 @@ class GuaScene {
         }
     }
     update() {
+        this.debug && this.debug()
         //  可以设置专门的调试代码
         if (this.debugModeEnabled) {
             for (let i = 0; i < this.elements.length; i++) {

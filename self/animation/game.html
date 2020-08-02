@@ -25,82 +25,20 @@
     <!-- 结束和标题场景 -->
     <script src='scene/end/scene_end.js'></script>
     <script src='scene/title/scene_title.js'></script>
-    <!-- 关卡数据 -->
-    <script src='level.js'></script>
+    <!-- 配置 -->
+    <script src='config.js'></script>
 </head>
 <body>
 <canvas id="id-canvas" width="600" height="600"></canvas>
 <hr>
-<!--        <input id=id-input-speed type="range" value="1">-->
 <div>
-    <div class="">
-        <!-- <textarea id="id-text-log" rows="20" cols="50"></textarea> -->
-    </div>
     <div>
-       <span>按a 左走</span>
-       <span>按d 右走</span>
-       <span>按 j 跳跃</span>
-
+        <span>按a左走</span>
+        <span style="margin: 15px">按d右走</span>
+        <span>按j跳跃</span>
     </div>
 
-    <div calss="">
-        <label>
-            <input
-                    class="gua-auto-slider"
-                    type="range"
-                    value=""
-                    data-value="config.player_speed"
-            >
-            玩家速度 <span class="gua-label"></span>
-        </label>
-    </div>
-    <div calss="">
-        <label>
-            <input
-                    class="gua-auto-slider"
-                    type="range"
-                    value=""
-                    data-value="config.bullet_speed"
-            >
-            子弹速度 <span class="gua-label"></span>
-        </label>
-    </div>
-    <div calss="">
-        <label>
-            <input
-                    class="gua-auto-slider"
-                    type="range"
-                    value=""
-                    data-value="config.fire_cooldown"
-            >
-            子弹冷却功能 <span class="gua-label"></span>
-        </label>
-    </div>
-    <div calss="">
-        <label>
-            <input
-                    class="gua-auto-slider"
-                    type="range"
-                    value=""
-                    max="30"
-                    min="-15"
-                    data-value="config.cloud_speed"
-            >
-            云速度 <span class="gua-label"></span>
-        </label>
-    </div>
-    <div calss="">
-        <label>
-            <input
-                    class="gua-auto-slider"
-                    type="range"
-                    value=""
-                    max="100"
-                    min="-10"
-                    data-value="config.enemy_speed"
-            >
-            敌人速度 <span class="gua-label"></span>
-        </label>
+    <div class="gua-controls">
     </div>
 </div>
 
@@ -117,14 +55,47 @@
             })
         }
     }
-    binAll('.gua-auto-slider', 'input', function (event) {
-        let target = event.target
-        let bindVar = target.dataset.value
-        let v = target.value
-        eval(bindVar + '=' + v)
-        let label = target.closest('label').querySelector('.gua-label')
-        label.innerText = v
-    })
+    const templateControl = function (key, item) {
+        let t = `
+        <div class="">
+            <label>
+                <input
+                        class="gua-auto-slider"
+                        max="500"
+                        type="range"
+                        value=${item.value}
+                        data-value="config.${key}"
+                >
+                ${item._comment} <span class="gua-label"></span>
+            </label>
+        </div>`
+        return t
+    }
+    const inserControles = function () {
+        let div = e('.gua-controls')
+        let keys = Object.keys(config)
+        for (let key of keys) {
+           let html =  templateControl(key, config[key])
+            div.insertAdjacentHTML('beforeend', html)
+        }
+    }
+    const bindEvents = function () {
+        binAll('.gua-auto-slider', 'input', function (event) {
+            let target = event.target
+            let bindVar = target.dataset.value
+            let v = target.value
+            eval(bindVar + '.value =' + v)
+            let label = target.closest('label').querySelector('.gua-label')
+            label.innerText = v
+        })
+    }
+
+    const ___main = function () {
+        // 根据配置文件动态生成
+        inserControles()
+        bindEvents()
+    }
+    ___main()
 </script>
 <script src=main.js></script>
 </body>

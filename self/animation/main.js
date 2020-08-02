@@ -56,9 +56,8 @@ var __main = function() {
         idle4: 'img/idle/idle4.png',
         idle5: 'img/idle/idle5.png',
         idle6: 'img/idle/idle6.png',
-        ground: 'img/brid/ground.png',
-
-
+        ground: 'img/bird/ground.png',
+        pipe: 'img/bird/pipe1.png',
     }
 
     var game = GuaGame.instance(30, images, function(g){

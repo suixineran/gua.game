@@ -1,10 +1,10 @@
-let config = {
-    player_speed: 10,
-    cloud_speed: 10,
-    enemy_speed: 10,
-    bullet_speed: 10,
-    fire_cooldown: 10,
-}
+// let config = {
+//     player_speed: 10,
+//     cloud_speed: 10,
+//     enemy_speed: 10,
+//     bullet_speed: 10,
+//     fire_cooldown: 10,
+// }
 
 class Bullet extends GuaImage {
     constructor(game) {

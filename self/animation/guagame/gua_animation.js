@@ -100,7 +100,6 @@ class GuaAnimation {
         context.globalAlpha = this.alpha
         context.rotate(this.rotation * Math.PI / 180)
         context.translate(-w2, h2)
-
         context.drawImage(this.texture, 0, 0)
         context.restore()
 
